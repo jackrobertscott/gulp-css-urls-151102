@@ -1,8 +1,14 @@
 {
   "name": "gulp-css-urls",
   "version": "0.1.0",
-  "description": "Gulp plugin that allows you to alter urls in css files",
+  "description": "Gulp plugin to alter urls in css files",
   "main": "index.js",
+  "keywords": [
+    "gulpplugin",
+    "gulp",
+    "css",
+    "url"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +21,15 @@
   "bugs": {
     "url": "https://github.com/jackrobertscott/gulp-css-urls/issues"
   },
-  "homepage": "https://github.com/jackrobertscott/gulp-css-urls#readme"
+  "homepage": "https://github.com/jackrobertscott/gulp-css-urls#readme",
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "rework": "^1.0.1",
+    "rework-plugin-url": "^1.1.0",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3"
+  }
 }
