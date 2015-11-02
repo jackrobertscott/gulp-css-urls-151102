@@ -60,7 +60,8 @@ div {
 
 ## API
 ### cssUrls(options)
-#### options
+- **options**
+
 Type: `Object|Function` Required value.
 
 A object with options or a function that may manipulate css urls.
@@ -86,7 +87,9 @@ Type: `Boolean` Default value: `false`.
 Write sourcemaps.
 
 ## Credits
-[https://github.com/reworkcss/rework](https://github.com/reworkcss/rework) [https://github.com/reworkcss/rework-plugin-url](https://github.com/reworkcss/rework-plugin-url) [https://github.com/trentearl/gulp-css-url-adjuster](https://github.com/trentearl/gulp-css-url-adjuster)
+- [https://github.com/reworkcss/rework](https://github.com/reworkcss/rework)
+- [https://github.com/reworkcss/rework-plugin-url](https://github.com/reworkcss/rework-plugin-url)
+- [https://github.com/trentearl/gulp-css-url-adjuster](https://github.com/trentearl/gulp-css-url-adjuster)
 
 ## License
 The MIT License (MIT)
