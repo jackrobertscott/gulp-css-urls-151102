@@ -58,7 +58,7 @@ module.exports = function(fn, opts) {
     }
 
     var data;
-    var str = file.contents.toString('utf8');
+    var str = file.contents.toString();
 
     try {
       data = rework(str).use(reworkUrl(urlfn)).toString({

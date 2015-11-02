@@ -37,6 +37,8 @@ gulp.task('cssUrls', function() {
   return gulp.src('./src/*.css')
     .pipe(cssUrls(function(url) {
       return 'http://example.com' + url + '?version=2';
+    }, {
+      sourcemaps: true,
     }))
     .pipe(gulp.dest('./dist/'));
 });

@@ -1,0 +1,11 @@
+div {
+  background-image: url("function/option/relative.jpg");
+}
+
+div {
+  background-image: url("function/option/absolute.jpg");
+}
+
+div {
+  background-image: url("function/option/data:image/jpg;base64,/9j/ke4uvs");
+}
