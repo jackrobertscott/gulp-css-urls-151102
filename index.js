@@ -1,3 +1,4 @@
+var path = require('path');
 var through = require('through2');
 var gutil = require('gulp-util');
 var rework = require('rework');
@@ -34,7 +35,7 @@ module.exports = function(options) {
           return url;
         }
         if (options.prepend) {
-          url = options.prepend + url;
+          url = path.join(options.prepend, url);
         }
         if (options.append) {
           url = url + options.append;
