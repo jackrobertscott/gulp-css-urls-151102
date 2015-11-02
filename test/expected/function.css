@@ -7,5 +7,5 @@ div {
 }
 
 div {
-  background-image: url("prepend/data:image/jpg;base64,/9j/ke4uvs?version=2");
+  background-image: url("data:image/jpg;base64,/9j/ke4uvs");
 }

@@ -22,9 +22,16 @@ function getExpected(fileName) {
 }
 
 function compare(stream, fixtureName, expectedName, done) {
+  var called = false;
+  function cb() {
+    if (!called) {
+      done();
+    }
+  }
+
   stream
-    .on('error', done)
-    .on('end', done);
+    .once('error', cb)
+    .once('end', cb);
 
   stream.on('data', function(file) {
     // make sure we checking correct file

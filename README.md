@@ -59,12 +59,19 @@ div {
 ```
 
 ## API
-### cssUrls(options)
+### cssUrls(options) or cssUrls(function[, options])
+- **function**
+
+Type: `Function`.
+
+Function that may manipulate the given url. It takes the url as only parameter.
+
+Note: the function will be run *after* the options are evaluated.
 - **options**
 
-Type: `Object|Function` Required value.
+Type: `Object` Required if `function` not given.
 
-A object with options or a function that may manipulate css urls.
+An object with options or a function that may manipulate css urls.
 - **options.prepend**
 
 Type: `String` Default value: `undefined`.
@@ -75,6 +82,11 @@ Prepend the given string to all urls.
 Type: `String` Default value: `undefined`.
 
 Append the given string to all urls.
+- **options.unsafe**
+
+Type: `Boolean` Default value: `false`.
+
+Do not use `path.join` when prepending to urls.
 - **options.data**
 
 Type: `Boolean` Default value: `false`.
