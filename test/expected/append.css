@@ -1,0 +1,11 @@
+div {
+  background-image: url("relative.jpg?version=2");
+}
+
+div {
+  background-image: url("/absolute.jpg?version=2");
+}
+
+div {
+  background-image: url("data:image/jpg;base64,/9j/ke4uvs");
+}

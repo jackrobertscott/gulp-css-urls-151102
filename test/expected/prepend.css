@@ -1,0 +1,11 @@
+div {
+  background-image: url("prepend/relative.jpg");
+}
+
+div {
+  background-image: url("prepend/absolute.jpg");
+}
+
+div {
+  background-image: url("data:image/jpg;base64,/9j/ke4uvs");
+}
