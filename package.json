@@ -1,0 +1,19 @@
+{
+  "name": "gulp-css-urls",
+  "version": "0.1.0",
+  "description": "Gulp plugin that allows you to alter urls in css files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackrobertscott/gulp-css-urls.git"
+  },
+  "author": "Jack Scott <jack.rob.scott@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackrobertscott/gulp-css-urls/issues"
+  },
+  "homepage": "https://github.com/jackrobertscott/gulp-css-urls#readme"
+}
