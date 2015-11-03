@@ -1,7 +1,7 @@
 # [gulp](https://github.com/gulpjs/gulp)-css-urls [![Build Status](https://travis-ci.org/jackrobertscott/gulp-css-urls.svg?branch=master)](https://travis-ci.org/jackrobertscott/gulp-css-urls)
 > Gulp plugin to alter urls in css files
 
-Particularly helpful in situations such as with github pages. See [here](http://stackoverflow.com/questions/16316311/github-pages-and-relative-paths).
+Helpful in situations such as with relative URLs in [github pages](http://stackoverflow.com/questions/16316311/github-pages-and-relative-paths). Post any issues [here](https://github.com/jackrobertscott/gulp-css-urls/issues).
 
 ## Installation
 Install with [npm](https://npmjs.org/package/gulp-css-urls)
