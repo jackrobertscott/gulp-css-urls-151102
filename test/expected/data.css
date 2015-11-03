@@ -1,0 +1,11 @@
+div {
+  background-image: url("prepend/relative.jpg?version=2");
+}
+
+div {
+  background-image: url("prepend/absolute.jpg?version=2");
+}
+
+div {
+  background-image: url("prepend/data:image/jpg;base64,/9j/ke4uvs?version=2");
+}

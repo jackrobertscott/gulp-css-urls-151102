@@ -4,6 +4,16 @@ var assert = require('chai').assert;
 var gutil = require('gulp-util');
 var cssUrls = require('..');
 
+function makeFile() {
+  var name = 'file-' + Math.floor(Math.random() * 1000);
+  return new gutil.File({
+    path: 'fake/file/path/' + name + '.css',
+    base: 'fake/file/path',
+    cwd: __dirname,
+    contents: new Buffer('.' + name + ' {}'),
+  });
+}
+
 function getFile(filePath) {
   return new gutil.File({
     path: filePath,
@@ -22,19 +32,6 @@ function getExpected(fileName) {
 }
 
 function compare(stream, fixtureName, expectedName, done) {
-  var called = false;
-
-  function cb() {
-    if (!called) {
-      called = true;
-      done();
-    }
-  }
-
-  stream
-    .once('error', done)
-    .once('end', done);
-
   stream.on('data', function(file) {
     // make sure we checking correct file
     if (path.basename(file.path) === fixtureName) {
@@ -44,6 +41,7 @@ function compare(stream, fixtureName, expectedName, done) {
     }
   });
 
+  stream.once('end', done);
   stream.write(getFixture(fixtureName));
   stream.end();
 }
@@ -51,14 +49,8 @@ function compare(stream, fixtureName, expectedName, done) {
 describe('gulp-css-urls', function() {
   describe('cssUrls()', function() {
 
-    it('should allow files to flow through', function(done) {
-      var fakePath = 'fake/file/path.css';
-      var fake = new gutil.File({
-        path: fakePath,
-        base: 'fake/file',
-        cwd: __dirname,
-        contents: new Buffer('.fake {}'),
-      });
+    it('should allow file streaming', function(done) {
+      var fakeFile = makeFile();
 
       var stream = cssUrls({
         prepend: 'prepend/',
@@ -66,43 +58,63 @@ describe('gulp-css-urls', function() {
 
       var a = 0;
 
-      stream
-        .once('error', done)
-        .once('end', done);
-
       stream.on('data', function(file) {
-        assert.equal(file.path, fakePath);
+        assert.equal(file.path, fakeFile.path);
         a++;
       });
 
-      stream.write(fake);
+      stream.once('end', done);
+      stream.write(fakeFile);
       stream.end();
 
       assert.equal(a, 1);
     });
 
-    it('should prepend to urls', function(done) {
-      var stream = cssUrls({
-        prepend: 'prepend/',
-      });
-      compare(stream, 'example.css', 'prepend.css', done);
+    it('should throw PluginError when no parameters given', function(done) {
+      assert.throw(function() {
+        var fakeFile = makeFile();
+        var stream = cssUrls();
+        stream.once('error', function(err) {
+            done();
+            throw err;
+          })
+          .once('end', done);
+        stream.write(fakeFile);
+        stream.end();
+      }, gutil.PluginError);
     });
 
-    it('should append to urls', function(done) {
-      var stream = cssUrls({
-        append: '?version=2',
-      });
-      compare(stream, 'example.css', 'append.css', done);
-    });
-
-    it('should alter urls based on function', function(done) {
+    it('should alter urls with function', function(done) {
       var stream = cssUrls(function(url) {
         return 'prepend/' + url + '?version=2';
       });
       compare(stream, 'example.css', 'function.css', done);
     });
 
-    it('should accept function with options', function(done) {
+    it('should prepend to urls with options.prepend', function(done) {
+      var stream = cssUrls({
+        prepend: 'prepend/',
+      });
+      compare(stream, 'example.css', 'prepend.css', done);
+    });
+
+    it('should append to urls with options.append', function(done) {
+      var stream = cssUrls({
+        append: '?version=2',
+      });
+      compare(stream, 'example.css', 'append.css', done);
+    });
+
+    it('should allow data URIs to be altered', function(done) {
+      var stream = cssUrls({
+        prepend: 'prepend/',
+        append: '?version=2',
+        data: true,
+      });
+      compare(stream, 'example.css', 'data.css', done);
+    });
+
+    it('should accept function and options together', function(done) {
       var stream = cssUrls(function(url) {
         return path.join('function', url);
       }, {
