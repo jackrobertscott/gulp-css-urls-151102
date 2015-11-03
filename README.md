@@ -13,7 +13,7 @@ $ npm install --save-dev gulp-css-urls
 ## Usage
 Passing an options object:
 
-```
+```js
 var gulp = require('gulp');
 var cssUrls = require('gulp-css-urls');
 
@@ -29,7 +29,7 @@ gulp.task('cssUrls', function() {
 
 Or passing a function:
 
-```
+```js
 var gulp = require('gulp');
 var cssUrls = require('gulp-css-urls');
 
@@ -46,7 +46,7 @@ gulp.task('cssUrls', function() {
 
 Should change:
 
-```
+```css
 div {
   background-image: url("/images/lemonade.jpg");
 }
@@ -54,7 +54,7 @@ div {
 
 Into:
 
-```
+```css
 div {
   background-image: url("http://example.com/images/lemonade.jpg?version=2");
 }
